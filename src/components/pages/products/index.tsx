@@ -56,7 +56,7 @@ const Product = () => {
             />
             {/* <button
               className="main-btn-primary-outline capitalize flex items-center gap-x-3"
-            
+
             >
               <Add className="w-5 h-5 " />
               Create Product
