@@ -25,7 +25,7 @@ const Item = ({ data }: { data: any }) => {
         </Link>
         <div className="flex flex-col gap-1">
           <span className="text-xs text-[#B8B8B8]">
-            {/* {format(new Date(data?.createdAt), "MMM do | h:mm aa")} */}
+            {format(new Date(data?.createdAt), "MMM do | h:mm aa")}
           </span>
           <div className="flex flex-col mb-[9px]">
             <Link
@@ -38,11 +38,11 @@ const Item = ({ data }: { data: any }) => {
               {data?.productName || "Product Name"}
             </h5>
           </div>
-          <div className="flex gap-2 items-center">
-            <div className="rounded w-[23px] h-[23px]">
-              <Avatar />
+          <div className="flex gap-2 items-center justify-between">
+            <div className="rounded ">
+              <Avatar className="w-[25px] h-[25px]" />
             </div>
-            <span className="regularCaption text-[#3949AB]">
+            <span className="regularCaption text-[#3949AB] ">
               {"Sodiq Azeez"}
             </span>
           </div>

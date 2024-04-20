@@ -1,6 +1,7 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import Navbar from "@/components/common/Navbar";
+import { useQuery } from "@tanstack/react-query";
 import { Add } from "@icons";
 import SortDropdown from "@/components/common/SortDropDown";
 import Item from "@/components/common/ProductItem";
@@ -8,6 +9,37 @@ import Item from "@/components/common/ProductItem";
 const Product = () => {
   const [currentSort, setCurrentSort] = useState<string>("");
   const [currentOrder, setCurrentOrder] = useState<string>("");
+
+  console.log(process.env.API_URL, "here");
+
+  const { isPending, error, data, refetch } = useQuery({
+    queryKey: ["productData"],
+    queryFn: () =>
+      fetch(
+        `http://localhost:4000/products?order_by=${
+          !currentOrder ? "desc" : currentOrder
+        }&sort_by=${!currentSort ? "createdAt" : currentSort}`,
+        {
+          mode: "cors",
+          headers: {
+            "Access-Control-Allow-Origin": "*",
+          },
+        }
+      ).then((res) => res.json()),
+  });
+
+  useEffect(() => {
+    if (currentOrder || currentSort) {
+      refetch();
+    }
+  }, [currentSort, currentOrder, refetch]);
+
+  console.log(data);
+  console.log(data?.data?.product);
+
+  if (isPending) return "Loading...";
+
+  if (error) return "An error has occurred: " + error.message;
 
   return (
     <main>
@@ -22,17 +54,17 @@ const Product = () => {
               setCurrentSort={setCurrentSort}
               setCurrentOrder={setCurrentOrder}
             />
-            <button
+            {/* <button
               className="main-btn-primary-outline capitalize flex items-center gap-x-3"
-              // onClick={toggleNeedModal}
+            
             >
               <Add className="w-5 h-5 " />
               Create Product
-            </button>
+            </button> */}
           </div>
         </div>
         <div className="grid grid-cols-6 lg:grid-cols-4 md:grid-cols-3 gap-8 px-4">
-          {[1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14].map((item, index) => (
+          {data?.data?.product.map((item: any, index: number) => (
             <Item data={item} key={index} />
           ))}
         </div>
