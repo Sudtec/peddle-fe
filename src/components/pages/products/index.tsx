@@ -14,20 +14,14 @@ const Product = () => {
   console.log(process.env.API_URL, "here");
 
   const { isPending, error, data, refetch } = useQuery({
-    queryKey: ["productData"],
+    queryKey: ["products"],
     queryFn: () =>
       fetch(
-        `http://localhost:4000/products?order_by=${
+        `${process.env.API_URL}products?order_by=${
           !currentOrder ? "desc" : currentOrder
         }&sort_by=${
           !currentSort ? "createdAt" : currentSort
         }&filter=${searchTerm}`
-        // {
-        //   mode: "cors",
-        //   headers: {
-        //     "Access-Control-Allow-Origin": "*",
-        //   },
-        // }
       ).then((res) => res.json()),
   });
 

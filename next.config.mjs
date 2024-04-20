@@ -9,7 +9,7 @@ const nextConfig = {
         return config;
     },
     env: {
-        API_URL: "http://localhost:4000/",
+        API_URL: "https://peddle-aner.onrender.com/",
     },
 };
 
