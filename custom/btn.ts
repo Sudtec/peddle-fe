@@ -17,7 +17,6 @@ const MainButtonStyle = {
 
 const ActionButtonStyle = {
   padding: "12px 20px 12px 30px",
-
 };
 
 const generateButtonStyles = (
@@ -34,7 +33,12 @@ const generateButtonStyles = (
 });
 
 const btn = {
-  ".main-btn-primary": generateButtonStyles("#131316", MainButtonStyle),
+  ".main-btn-primary": generateButtonStyles("#206ffa", MainButtonStyle),
+  ".main-btn-primary-outline": generateButtonStyles(
+    "#206ffa",
+    MainButtonStyle,
+    true
+  ),
   ".main-btn-secondary": generateButtonStyles("#4F4F4F", MainButtonStyle),
   ".action-btn-secondary": generateButtonStyles("#EFF1F6", ActionButtonStyle),
 };

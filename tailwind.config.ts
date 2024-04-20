@@ -1,4 +1,7 @@
 import type { Config } from "tailwindcss";
+import plugin from "tailwindcss/plugin";
+//** Custom Components */
+import btn from "./custom/btn";
 
 const config: Config = {
   content: [
@@ -13,8 +16,34 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      boxShadow: {
+        "product-card": "0px 1px 2px rgba(16, 24, 40, 0.05);",
+      },
+      colors: {
+        primary: "#206ffa",
+        "primary-dark": "#0653df",
+        secondary: "#e6e7eb",
+        "typography-400": "#1D2939",
+        "primary-500": "#303D8E",
+      },
+    },
+    screens: {
+      "2xl": { max: "1535px" },
+      xl: { max: "1279px" },
+      lg: { max: "1024px" },
+      slg: { max: "900px" },
+      md: { max: "767px" },
+      sm: { max: "425px" },
+      xsm: { max: "375px" },
     },
   },
-  plugins: [],
+  plugins: [
+    plugin(function ({ addComponents }) {
+      const newComponents: any = {
+        ...btn,
+      };
+      addComponents(newComponents);
+    }),
+  ],
 };
 export default config;
