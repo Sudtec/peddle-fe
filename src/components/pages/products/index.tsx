@@ -32,9 +32,11 @@ const Product = () => {
           </div>
         </div>
         <div className="grid grid-cols-6 lg:grid-cols-4 md:grid-cols-3 gap-8 px-4">
-          {[1, 2, 3, 4, 5, 6, 7, 8,9,10,11,12,13,14].map((item, index) => (
-            <Item data={item} key={index} />
-          ))}
+          {[1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14].map(
+            (item, index) => (
+              <Item data={item} key={index} />
+            )
+          )}
         </div>
       </div>
     </main>
