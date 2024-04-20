@@ -7,7 +7,10 @@ const nextConfig = {
         });
 
         return config;
-    }
+    },
+    env: {
+        API_URL: "http://localhost:4000/",
+    },
 };
 
 export default nextConfig;

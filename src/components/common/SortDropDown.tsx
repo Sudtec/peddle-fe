@@ -61,7 +61,7 @@ export default function SortDropdown({
                       active ? " text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-primary-dark`}
                     onClick={() => {
-                      setCurrentSort("ProductName");
+                      setCurrentSort("productName");
                       setCurrentOrder((prev) => {
                         if (prev == "") {
                           return "asc";
@@ -85,7 +85,7 @@ export default function SortDropdown({
                       active ? " text-white" : "text-gray-900"
                     } group flex w-full items-center rounded-md px-2 py-2 text-sm hover:bg-primary-dark`}
                     onClick={() => {
-                      setCurrentSort("BrandName");
+                      setCurrentSort("brand");
                       setCurrentOrder((prev) => {
                         if (prev == "") {
                           return "asc";
