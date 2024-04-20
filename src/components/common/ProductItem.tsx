@@ -45,6 +45,12 @@ const Item = ({ data }: { data: any }) => {
             <span className="regularCaption text-[#3949AB] ">
               {"Sodiq Azeez"}
             </span>
+            <Link
+              href={`product/${data.id}`}
+              className="text-sm underline underline-offset-4 decoration-primary-dark"
+            >
+              Edit
+            </Link>
           </div>
         </div>
       </div>
