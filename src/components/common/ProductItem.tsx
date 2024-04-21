@@ -1,14 +1,13 @@
 import { format } from "date-fns";
 import Link from "next/link";
-import { Boosted, Avatar } from "@icons";
+import { Boosted, Avatar, Edit } from "@icons";
 import Image from "next/image";
 
 const Item = ({ data }: { data: any }) => {
   return (
     <>
-      <div className="shadow-product-card border-[#E2E4F2] p-3 lg:p-2 rounded-[16px] flex flex-col gap-3">
+      <div className="shadow-md border-[#E2E4F2] p-3 lg:p-2 rounded-[16px] flex flex-col gap-3">
         <Link href={`/product/${data?.id}`} className="relative">
-          {/* <Magnifier src={image} alt="product" className="product__magnifier" /> */}
           <Image
             src={"/img/product.png"}
             alt="product"
@@ -16,12 +15,10 @@ const Item = ({ data }: { data: any }) => {
             height={153}
             className="w-full rounded-[10px] h-[153px] md:h-[120px] object-cover object-center cursor-pointer"
           />
-          {/* {boosted && ( */}
           <div className="absolute px-2 h-5 top-[10px] right-[10px] gap-2 bg-[#3949AB] rounded-md border-0 flex items-center">
             <Boosted />
             <span className="text-xs text-white">In-Stock</span>
           </div>
-          {/* )} */}
         </Link>
         <div className="flex flex-col gap-1">
           <span className="text-xs text-[#B8B8B8]">
@@ -39,17 +36,19 @@ const Item = ({ data }: { data: any }) => {
             </h5>
           </div>
           <div className="flex gap-2 items-center justify-between">
-            <div className="rounded ">
-              <Avatar className="w-[25px] h-[25px]" />
+            <div className="flex items-center gap-x-2">
+              <div className="rounded ">
+                <Avatar className="w-[25px] h-[25px]" />
+              </div>
+              <span className="regularCaption text-[#3949AB] ">
+                {"Sodiq Azeez"}
+              </span>
             </div>
-            <span className="regularCaption text-[#3949AB] ">
-              {"Sodiq Azeez"}
-            </span>
-            <Link
-              href={`product/${data.id}`}
-              className="text-sm underline underline-offset-4 decoration-primary-dark"
-            >
-              Edit
+            <Link href={`product/${data.id}`} className="flex items-center gap-x-1 underline underline-offset-4 decoration-primary-dark">
+              <Edit />
+              <span className="text-sm ">
+                Edit
+              </span>
             </Link>
           </div>
         </div>

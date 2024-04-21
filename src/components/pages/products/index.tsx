@@ -5,13 +5,12 @@ import { useQuery } from "@tanstack/react-query";
 import { Add } from "@icons";
 import SortDropdown from "@/components/common/SortDropDown";
 import Item from "@/components/common/ProductItem";
+import Loading from "@/app/loading";
 
 const Product = () => {
   const [currentSort, setCurrentSort] = useState<string>("");
   const [currentOrder, setCurrentOrder] = useState<string>("");
   const [searchTerm, setSearchTerm] = useState<string>("");
-
-  console.log(process.env.API_URL, "here");
 
   const { isPending, error, data, refetch } = useQuery({
     queryKey: ["products"],
@@ -31,10 +30,9 @@ const Product = () => {
     }
   }, [currentSort, currentOrder, refetch, searchTerm]);
 
-  console.log(data);
-  console.log(data?.data?.product);
 
-  if (isPending) return "Loading...";
+
+  if (isPending) return <Loading />;
 
   if (error) return "An error has occurred: " + error.message;
 
@@ -44,17 +42,14 @@ const Product = () => {
       <div className="border border-[#e6e7eb] max-w-full h-[85vh] px-6 py-8 m-5 rounded-md overflow-y-scroll">
         <div className="flex justify-between px-6 pb-8">
           <h4 className="text-[24px] font-semibold">Product</h4>
-          {/* <div className="flex items-center gap-x-8"> */}
           <SortDropdown
             currentSort={currentSort}
             currentOrder={currentOrder}
             setCurrentSort={setCurrentSort}
             setCurrentOrder={setCurrentOrder}
           />
-
-          {/* </div> */}
         </div>
-        <div className="grid grid-cols-6 lg:grid-cols-4 md:grid-cols-3 gap-8 px-4">
+        <div className="grid grid-cols-5 lg:grid-cols-4 md:grid-cols-3 sm:grid-cols-1 gap-8 px-4">
           {data?.data?.product.map((item: any, index: number) => (
             <Item data={item} key={index} />
           ))}

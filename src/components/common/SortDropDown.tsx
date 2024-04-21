@@ -35,7 +35,7 @@ export default function SortDropdown({
           <Menu.Button className="flex items-center gap-x-4  px-6 py-[14px] text-sm font-medium border rounded-[100px]">
             <label className="text-base ">
               {currentSort
-                ? currentSort === "BrandName"
+                ? currentSort === "brand"
                   ? "Brand Name"
                   : "Product Name"
                 : "Sort"}
