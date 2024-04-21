@@ -31,7 +31,7 @@ const Item = ({ data }: { data: any }) => {
             >
               {data?.brand || "Brand Name"}
             </Link>
-            <h5 className="text-base font-bold text-primary-500 font-outfit-bold">
+            <h5 className="text-base lg:text-sm font-bold text-primary-500 font-outfit-bold">
               {data?.productName || "Product Name"}
             </h5>
           </div>
@@ -44,11 +44,12 @@ const Item = ({ data }: { data: any }) => {
                 {"Sodiq Azeez"}
               </span>
             </div>
-            <Link href={`product/${data.id}`} className="flex items-center gap-x-1 underline underline-offset-4 decoration-primary-dark">
+            <Link
+              href={`product/${data.id}`}
+              className="flex items-center gap-x-1 underline underline-offset-4 decoration-primary-dark"
+            >
               <Edit />
-              <span className="text-sm ">
-                Edit
-              </span>
+              <span className="text-sm ">Edit</span>
             </Link>
           </div>
         </div>
