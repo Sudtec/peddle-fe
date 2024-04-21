@@ -21,9 +21,15 @@ const Item = ({ data }: { data: any }) => {
           </div>
         </Link>
         <div className="flex flex-col gap-1">
-          <span className="text-xs text-[#B8B8B8]">
-            {format(new Date(data?.createdAt), "MMM do | h:mm aa")}
-          </span>
+          <div className="flex justify-between items-center">
+            <span className="text-xs text-[#B8B8B8]">
+              {format(new Date(data?.createdAt), "MMM do | h:mm aa")}
+            </span>
+            <span className="text-sm text-primary-dark">
+              {data?.upc12 || "upc12"}
+            </span>
+          </div>
+
           <div className="flex flex-col mb-[9px]">
             <Link
               href={`/product/${data?.id}`}

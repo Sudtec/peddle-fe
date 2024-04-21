@@ -8,6 +8,7 @@ import { useParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import Navbar from "@/components/common/Navbar";
 import Loading from "@/app/loading";
+import Link from "next/link";
 
 function EditProduct() {
   const params = useParams();
@@ -35,7 +36,7 @@ function EditProduct() {
       });
       setTimeout(() => {
         setLoading(false);
-      },2000);
+      }, 2000);
     }
   }, [data]);
 
@@ -127,20 +128,34 @@ function EditProduct() {
                   ...prev,
                   upc12: e.target.value,
                 }));
+                console.log(/[a-zA-Z]/.test(e.target.value));
               }}
-              error={formData.upc12 ? "" : "Barcode is Required"}
+              error={
+                formData.upc12
+                  ? /[a-zA-Z]/.test(formData.upc12)
+                    ? "Barcode should not contain an Alphabet"
+                    : ""
+                  : "Barcode is Required!"
+              }
             />
           </div>
 
           {/* submit */}
-          <div className="flex justify-end">
-            {/* <button className="main-btn-primary">Update Product</button> */}
+          <div className="flex justify-end gap-x-7">
+            <Link href={"/"} className="main-btn-primary-outline">
+              Cancel
+            </Link>
             <Button
               className="main-btn-primary"
               onClick={() => updateProduct()}
               loading={updatePending}
+              disabled={
+                formData.brand == "" ||
+                formData.productName == "" ||
+                formData.upc12 == ""
+              }
             >
-              Update Product
+              Save
             </Button>
           </div>
         </div>
